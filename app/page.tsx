@@ -5,14 +5,7 @@ import dynamic from 'next/dynamic'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import { Slider } from '@/components/ui/slider'
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from '@/components/ui/dialog'
+import { Dialog, DialogTrigger } from '@/components/ui/dialog'
 import { Calendar } from '@/components/ui/calendar'
 import {
   Select,
@@ -21,7 +14,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-import { Heart, Star, Coffee, Film, Utensils, Clock } from 'lucide-react'
+import { Star, Coffee, Film, Utensils, Clock } from 'lucide-react'
 import confetti from 'canvas-confetti'
 
 interface Answers {
@@ -299,7 +292,7 @@ export default function EnchantingDateProposalApp() {
                       rounded-lg shadow-md bg-white text-pink-600
                       hover:bg-pink-100 font-bold"
             onClick={() => {
-              setAnswers({ ...answers, activity: key as any })
+              setAnswers({ ...answers, activity: key as Answers['activity'] })
               setStep(step + 1)
             }}
           >

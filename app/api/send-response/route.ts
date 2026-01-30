@@ -1,19 +1,16 @@
 import { NextResponse } from "next/server"
 import nodemailer from "nodemailer"
 
-const transporter = nodemailer.createTransport({
-  host: "smtp.gmail.com",
-  port: 465,
-  secure: true,
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_APP_PASSWORD,
-  },
-})
+// 🚨 BẮT BUỘC: nodemailer chỉ chạy với Node runtime
+export const runtime = "nodejs"
 
 export async function POST(request: Request) {
-  if (!process.env.EMAIL_USER || !process.env.EMAIL_APP_PASSWORD) {
-    console.error("Missing email credentials")
+  // ✅ Check env TRƯỚC – tránh crash cold start
+  const EMAIL_USER = process.env.EMAIL_USER
+  const EMAIL_APP_PASSWORD = process.env.EMAIL_APP_PASSWORD
+
+  if (!EMAIL_USER || !EMAIL_APP_PASSWORD) {
+    console.error("❌ Missing email credentials")
     return NextResponse.json(
       { success: false, error: "Missing email configuration" },
       { status: 500 }
@@ -21,6 +18,7 @@ export async function POST(request: Request) {
   }
 
   try {
+    // ✅ Parse body
     const data = await request.json()
 
     // 👉 Xác định lựa chọn cuối theo activity
@@ -42,9 +40,24 @@ export async function POST(request: Request) {
       choiceValue = data.movie || "Not selected"
     }
 
+    // ✅ Tạo transporter TRONG handler
+    const transporter = nodemailer.createTransport({
+      host: "smtp.gmail.com",
+      port: 465,
+      secure: true,
+      auth: {
+        user: EMAIL_USER,
+        pass: EMAIL_APP_PASSWORD,
+      },
+    })
+
+    // (Optional) verify – rất hữu ích khi debug
+    await transporter.verify()
+
+    // ✅ Send mail
     await transporter.sendMail({
-      from: process.env.EMAIL_USER,
-      to: process.env.EMAIL_USER,
+      from: `"Date Proposal 💕" <${EMAIL_USER}>`,
+      to: EMAIL_USER,
       subject: "💕 New Date Response!",
       html: `
         <h1>💖 She said YES!</h1>
@@ -56,18 +69,6 @@ export async function POST(request: Request) {
 
         <p><strong>Activity:</strong> ${data.activity}</p>
         <p><strong>${choiceLabel}:</strong> ${choiceValue}</p>
-
-        ${
-          data.address
-            ? `<p><strong>Address:</strong> ${data.address}</p>`
-            : ""
-        }
-
-        ${
-          data.map
-            ? `<p><strong>Google Maps:</strong> <a href="${data.map}" target="_blank">${data.map}</a></p>`
-            : ""
-        }
 
         <hr />
 
@@ -83,18 +84,14 @@ export async function POST(request: Request) {
     })
 
     return NextResponse.json({ success: true })
-  } catch (error: unknown) {
-    console.error("Failed to send email:", error)
+  } catch (error) {
+    console.error("❌ Failed to send email:", error)
 
-    if (error instanceof Error) {
-      return NextResponse.json(
-        { success: false, error: error.message },
-        { status: 500 }
-      )
-    }
+    const message =
+      error instanceof Error ? error.message : "Unknown error"
 
     return NextResponse.json(
-      { success: false, error: "An unknown error occurred" },
+      { success: false, error: message },
       { status: 500 }
     )
   }

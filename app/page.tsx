@@ -111,10 +111,10 @@ export default function EnchantingDateProposalApp() {
   const movieOptions = [
     {
       name: 'Galaxy Parc Mall Q8',
-      address: 'Vincom Center · District 1',
+      address: '549 Đ. Tạ Quang Bửu, Phường 4, Quận 8',
       image: '/images/galaxy.jpg',
       map:
-        '549 Đ. Tạ Quang Bửu, Phường 4, Quận 8, Thành phố Hồ Chí Minh 700000, Việt Nam',
+        'https://www.google.com/maps/place/Galaxy+Parc+Mall+Q8/@10.7404528,106.6761598,17z/data=!3m1!4b1!4m6!3m5!1s0x31752f0051f700db:0xa2da86948830ad95!8m2!3d10.7404475!4d106.6787347!16s%2Fg%2F11w4cgw_3q?entry=ttu&g_ep=EgoyMDI2MDEyOC4wIKXMDSoASAFQAw%3D%3D',
     },
     {
       name: 'LOTTE Cinema Nowzone',

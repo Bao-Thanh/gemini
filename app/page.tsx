@@ -233,15 +233,16 @@ export default function EnchantingDateProposalApp() {
         className="w-full max-w-md mx-auto mb-4 rounded-lg shadow-lg"
       />
       <div className="mb-6 p-4 bg-white rounded-lg shadow-lg">
-        <Calendar
-          mode="single"
-          selected={answers.date || undefined}
-          onSelect={(date) => setAnswers({ ...answers, date: date || null })}
-          defaultMonth={tomorrow} // 👈 mở ở tháng có ngày mai
-          defaultSelected={tomorrow} // 👈 focus / highlight ngày mai
-          className="mx-auto mb-4"
-          disabled={(day) => day < new Date(new Date().setHours(0, 0, 0, 0))}
-        />
+      <Calendar
+        mode="single"
+        selected={answers.date ?? tomorrow}   // 👈 focus ngày mai
+        onSelect={(date) => setAnswers({ ...answers, date: date || null })}
+        defaultMonth={tomorrow}               // 👈 mở đúng tháng
+        className="mx-auto mb-4"
+        disabled={(day) =>
+          day < new Date(new Date().setHours(0, 0, 0, 0))
+        }
+      />
         <Select onValueChange={(time) => setAnswers({ ...answers, time })}>
           <SelectTrigger className="w-full">
             <SelectValue placeholder="Select a time" />

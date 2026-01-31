@@ -156,6 +156,9 @@ export default function EnchantingDateProposalApp() {
     })
   }
 
+  const tomorrow = new Date()
+  tomorrow.setDate(tomorrow.getDate() + 1)
+
   const steps = [
     // Step 0: Initial Question
     <motion.div key="step0" className="text-center" {...fadeInUp}>
@@ -234,8 +237,10 @@ export default function EnchantingDateProposalApp() {
           mode="single"
           selected={answers.date || undefined}
           onSelect={(date) => setAnswers({ ...answers, date: date || null })}
+          defaultMonth={tomorrow} // 👈 mở ở tháng có ngày mai
+          defaultSelected={tomorrow} // 👈 focus / highlight ngày mai
           className="mx-auto mb-4"
-          disabled={(day) => day <= new Date(new Date().setHours(0, 0, 0, 0))}
+          disabled={(day) => day < new Date(new Date().setHours(0, 0, 0, 0))}
         />
         <Select onValueChange={(time) => setAnswers({ ...answers, time })}>
           <SelectTrigger className="w-full">

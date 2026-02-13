@@ -87,14 +87,14 @@ export default function EnchantingDateProposalApp() {
   const eatOptions = [
     {
       name: 'Panda BBQ',
-      address: '6 Đ. Phạm Hùng, Bình Hưng, Bình Chánh',
+      address: '6 Phạm Hùng, Bình Hưng, Bình Chánh',
       image: '/images/panda.jpg',
       map:
         'https://www.google.com/maps/place/Panda+BBQ/@10.7338042,106.6708145,17z/data=!3m1!4b1!4m6!3m5!1s0x31752ef9452960d9:0xc43f6c436295990c!8m2!3d10.7337989!4d106.6733894!16s%2Fg%2F11bxfrx_xp?entry=ttu&g_ep=EgoyMDI2MDEyNy4wIKXMDSoASAFQAw%3D%3D',
     },
     {
       name: 'Làng Nướng Nam Bộ Quận 8',
-      address: '810 Đ. Tạ Quang Bửu, Phường 5, Quận 8',
+      address: '810 Tạ Quang Bửu, Phường 5, Quận 8',
       image: '/images/lau.jpg',
       map:
         'https://www.google.com/maps/place/L%C3%A0ng+N%C6%B0%E1%BB%9Bng+Nam+B%E1%BB%99+Qu%E1%BA%ADn+8/@10.7371623,106.6680286,17z/data=!3m1!4b1!4m6!3m5!1s0x31752fa253e701d7:0x29c1c1549b81203!8m2!3d10.737157!4d106.6706035!16s%2Fg%2F11y3mvd3zh?entry=ttu&g_ep=EgoyMDI2MDEyNy4wIKXMDSoASAFQAw%3D%3D',
@@ -111,7 +111,7 @@ export default function EnchantingDateProposalApp() {
   const movieOptions = [
     {
       name: 'Galaxy Parc Mall Q8',
-      address: '549 Đ. Tạ Quang Bửu, Phường 4, Quận 8',
+      address: '549 Tạ Quang Bửu, Phường 4, Quận 8',
       image: '/images/galaxy.jpg',
       map:
         'https://www.google.com/maps/place/Galaxy+Parc+Mall+Q8/@10.7404528,106.6761598,17z/data=!3m1!4b1!4m6!3m5!1s0x31752f0051f700db:0xa2da86948830ad95!8m2!3d10.7404475!4d106.6787347!16s%2Fg%2F11w4cgw_3q?entry=ttu&g_ep=EgoyMDI2MDEyOC4wIKXMDSoASAFQAw%3D%3D',
@@ -129,7 +129,7 @@ export default function EnchantingDateProposalApp() {
   const coffeeOptions = [
     {
       name: 'Trà sữa KAITEA Phạm Hùng',
-      address: '222 Đ. Phạm Hùng, Phường 5, Quận 8',
+      address: '222 Phạm Hùng, Phường 5, Quận 8',
       image: '/images/KAITEA.jpg',
       map:
         'https://www.google.com/maps/place/Tr%C3%A0+s%E1%BB%AFa+KAITEA+Ph%E1%BA%A1m+H%C3%B9ng/@10.7414635,106.6638889,17z/data=!3m1!4b1!4m6!3m5!1s0x31752fe400b4f3d1:0x9969989869cd9d02!8m2!3d10.7414583!4d106.6687598!16s%2Fg%2F11hyxm2wc5?entry=ttu&g_ep=EgoyMDI2MDEyNy4wIKXMDSoASAFQAw%3D%3D',
